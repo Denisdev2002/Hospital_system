@@ -1,0 +1,52 @@
+<?php
+session_start();
+?>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <form method="post" action="CRUD.php">
+        <?php if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            session_unset();
+            }?>
+        <fieldset>
+            <legend>Cadastro</legend>
+            <div class="inputName">
+                <label for="textName">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Digite o seu nome completo...">
+            </div>
+            <div class="inputEmail">
+                <label for="texteEmail">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="fulano123@provedor.com">
+            </div>
+            <div class="Identity">
+                <label for="textIdentity">CPF</label>
+                <input type="text" id="identity" name="identity" placeholder="000.000.000-00">
+            </div>
+            <div class="inputBirth">
+                <label for="textBirth">Nascimento</label>
+                <input type="date" id="birth" name="birth" max="2022-12-30">
+            </div>
+            <div class="inputPassword">
+                <label for="textePassword">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6"
+                maxlength="10">
+            </div>
+            <div class="inputConfirmPassword">
+                <label for="textConfirmPassowrd">Confirmação da senha</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita novamente a senha" minlength="6"
+                 maxlength="10">
+            </div>
+        </fieldset>
+        <div class="inputSubmit">
+            <input type="submit" id="submit" name="submit" value="Cadastrar">
+        </div>
+    </form>
+    
+</body>
+</html>
