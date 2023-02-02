@@ -2,18 +2,20 @@
 session_start();
 ?>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
 </head>
+
 <body>
-    <form method="post" action="CRUD.php">
-        <?php if(isset($_SESSION['msg'])){
+    <form method="post" action="../Controllers/Index.php">
+        <?php if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             session_unset();
-            }?>
+        } ?>
         <fieldset>
             <legend>Cadastro</legend>
             <div class="inputName">
@@ -34,19 +36,18 @@ session_start();
             </div>
             <div class="inputPassword">
                 <label for="textePassword">Senha</label>
-                <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6"
-                maxlength="10">
+                <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6" maxlength="10">
             </div>
             <div class="inputConfirmPassword">
                 <label for="textConfirmPassowrd">Confirmação da senha</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita novamente a senha" minlength="6"
-                 maxlength="10">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita novamente a senha" minlength="6" maxlength="10">
             </div>
         </fieldset>
         <div class="inputSubmit">
             <input type="submit" id="submit" name="submit" value="Cadastrar">
         </div>
     </form>
-    
+
 </body>
+
 </html>

@@ -5,7 +5,7 @@ namespace Cadastro\CRUD;
 use Connection as GlobalConnection;
 
 
-require_once('databaseConnection.php');
+require_once('../Lib/DatabaseConnection.php');
 
 
 
@@ -77,19 +77,5 @@ class Form extends GlobalConnection
 
       $query = ("INSERT INTO Sistema_cadastro.Cadastro (Full_name,Email,Identity,Birth,SPassword)VALUES('{$this->getName()}','{$this->getEmail()}','{$this->getIdentity()}','{$this->getBirth()}','{$this->getPassword()}')");
       $sql = $this->conect->query($query);
-   }
-}
-if (isset($_POST['submit'])) {
-   if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['identity']) && !empty($_POST['birth']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) {
-      session_start();
-      $obj = new Form;
-      echo $obj->getName();
-      echo $obj->getEmail();
-      echo $obj->getIdentity();
-      echo $obj->getBirth();
-      echo $obj->getPassword();
-      echo $obj->Insertion();
-      $_SESSION['msg'] = 'Usuário cadastrado com sucesso';
-      header('Location: RegistrationScreen.php');
    }
 }
