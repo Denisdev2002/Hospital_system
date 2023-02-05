@@ -20,26 +20,54 @@ session_start();
             <legend>Cadastro</legend>
             <div class="inputName">
                 <label for="textName">Nome</label>
+                <?php if (isset($_SESSION['errorName'])) {
+                    echo $_SESSION['errorName'];
+                    unset($_SESSION['errorName']);
+                } ?>
                 <input type="text" id="name" name="name" placeholder="Digite o seu nome completo...">
             </div>
             <div class="inputEmail">
+
                 <label for="texteEmail">E-mail</label>
+                <?php if (isset($_SESSION['errorEmail'])) {
+                    echo $_SESSION['errorEmail'];
+                    unset($_SESSION['errorEmail']);
+                } ?>
                 <input type="email" id="email" name="email" placeholder="fulano123@provedor.com">
             </div>
             <div class="Identity">
+
                 <label for="textIdentity">CPF</label>
+                <?php if (isset($_SESSION['errorIdentity'])) {
+                    echo $_SESSION['errorIdentity'];
+                    unset($_SESSION['errorIdentity']);
+                } ?>
                 <input type="text" id="identity" name="identity" placeholder="000.000.000-00">
             </div>
             <div class="inputBirth">
                 <label for="textBirth">Nascimento</label>
+                <?php if (isset($_SESSION['errorBirth'])) {
+                    echo $_SESSION['errorBirth'];
+                    unset($_SESSION['errorBirth']);
+                } ?>
                 <input type="date" id="birth" name="birth" max="2022-12-30">
             </div>
             <div class="inputPassword">
+
                 <label for="textePassword">Senha</label>
+                <?php if (isset($_SESSION['errorPassword'])) {
+                    echo $_SESSION['errorPassword'];
+                    unset($_SESSION['errorPassword']);
+                } ?>
                 <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6" maxlength="10">
             </div>
             <div class="inputConfirmPassword">
+
                 <label for="textConfirmPassowrd">Confirmação da senha</label>
+                <?php if (isset($_SESSION['errorConfirmPassword'])) {
+                    echo $_SESSION['errorConfirmPassword'];
+                    unset($_SESSION['errorConfirmPassword']);
+                } ?>
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita novamente a senha" minlength="6" maxlength="10">
             </div>
         </fieldset>

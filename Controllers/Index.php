@@ -2,6 +2,7 @@
 
 require_once('../Models/Crud.php');
 require_once('../Lib/DatabaseConnection.php');
+require_once('../Models/Error.php');
 
 use Cadastro\CRUD\Form;
 
@@ -26,8 +27,29 @@ if (isset($_POST['submit'])) {
          header('Location: ../Views/RegistrationScreen.php');
       } else {
          session_start();
-         $_SESSION['msg'] = 'Falha';
+         $_SESSION['msg'] = 'Senhas diferentes';
          header('Location: ../Views/RegistrationScreen.php');
+      }
+   } else {
+      $erro = new ErrorMessage();
+      header('Location: ../Views/RegistrationScreen.php ');
+      if (empty($_POST['name'])) {
+         $erro->errorName();
+      }
+      if (empty($_POST['email'])) {
+         $erro->errorEmail();
+      }
+      if (empty($_POST['identity'])) {
+         $erro->errorIdentity();
+      }
+      if (empty($_POST['birth'])) {
+         $erro->errorBirth();
+      }
+      if (empty($_POST['password'])) {
+         $erro->errorPassword();
+      }
+      if (empty($_POST['confirmPassword'])) {
+         $erro->errorConfirmPassword();
       }
    }
 }
