@@ -25,7 +25,7 @@ class ErrorMessage
         return $_SESSION['errorPassword'];
     }
     public function errorConfirmPassword(){
-        $_SESSION['errorconfirmPassword'] = "<p style='color: #ff0000'>Campo confirmação de senha obrigátorio";
+        $_SESSION['errorConfirmPassword'] = "<p style='color: #ff0000'>Campo confirmação de senha obrigátorio";
         return $_SESSION['errorEmail'];
     }
 }

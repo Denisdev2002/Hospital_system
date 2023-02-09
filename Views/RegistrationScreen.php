@@ -62,7 +62,7 @@ session_start();
                 <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6" maxlength="10">
             </div>
             <div class="inputConfirmPassword">
-
+        
                 <label for="textConfirmPassowrd">Confirmação da senha</label>
                 <?php if (isset($_SESSION['errorConfirmPassword'])) {
                     echo $_SESSION['errorConfirmPassword'];
@@ -75,6 +75,7 @@ session_start();
             <input type="submit" id="submit" name="submit" value="Cadastrar">
         </div>
     </form>
+    <a href="../Views/LoginScreen.html">Login</a>
 
 </body>
 
