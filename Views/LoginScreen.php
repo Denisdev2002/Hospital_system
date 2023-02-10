@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="../Models/Acess.php" method="post">
+    <form action="../Controllers/IndexLogin.php" method="post">
         <fieldset class="fieldset-form">
             <legend class="legend">Login</legend>
             <div class="inputUsers">

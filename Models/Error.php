@@ -28,4 +28,8 @@ class ErrorMessage
         $_SESSION['errorConfirmPassword'] = "<p style='color: #ff0000'>Campo confirmação de senha obrigátorio";
         return $_SESSION['errorEmail'];
     }
+    public function errorUser(){
+        $_SESSION['errorUser'] = "Conta não cadastrada";
+        return $_SESSION['errorUser'];
+    }
 }

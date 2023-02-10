@@ -62,8 +62,6 @@ class Form extends GlobalConnection
       return $this->confirmPassword;
    }
 
-
-
    public function limpaPost($post)
    {
       $post = trim($post);
