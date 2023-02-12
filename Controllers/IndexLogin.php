@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         if ($user->verificarUsuario() == true) {
             $_SESSION['msgUser'] = 'Bem vindo';
             header('Location: ../Views/Content.php');
-        } elseif($user->verificarUsuario() == false){
+        } elseif ($user->verificarUsuario() == false) {
             unset($user);
             $error = new ErrorMessage();
             $error->errorUser();
