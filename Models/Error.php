@@ -29,7 +29,7 @@ class ErrorMessage
         return $_SESSION['errorEmail'];
     }
     public function errorUser(){
-        $_SESSION['errorUser'] = "Conta não cadastrada";
+        $_SESSION['errorUser'] = "Usuário não cadastrada";
         return $_SESSION['errorUser'];
     }
 }

@@ -18,7 +18,6 @@ class Form extends GlobalConnection
    private $birth;
    private $password;
    private $confirmPassword;
-   protected $conn;
 
    public function __construct()
    {

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <html lang="pt-br">
 
 <head>
@@ -8,19 +12,25 @@
 </head>
 
 <body>
+    <?php if (isset($_SESSION['errorUser'])) {
+        echo $_SESSION['errorUser'];
+        unset($_SESSION['errorUser']);
+    }
+    ?>
     <form action="../Controllers/IndexLogin.php" method="post">
         <fieldset class="fieldset-form">
             <legend class="legend">Login</legend>
+
             <div class="inputUsers">
                 <label for="textUser">Usuário</label>
-                <input type="text" class="name" id="name" placeholder="Digite um usuário...">
+                <input type="email" class="name" name="name" id="name" placeholder="Digite um email...">
             </div>
             <div class="inputPassword">
                 <label for="textPassword">Senha</label>
-                <input type="password" class="password" id="password" placeholder="Digite a senha...">
+                <input type="password" class="password" name="password" id="password" placeholder="Digite a senha...">
             </div>
             <div class="submit">
-                <input type="submit" class="submit" id="submit" value="Entrar">
+                <input type="submit" name="submit" class="submit" id="submit" value="Entrar">
             </div>
         </fieldset>
 
