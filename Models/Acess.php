@@ -10,8 +10,8 @@ class Login extends Connection
 {
     private $email;
     private $password;
-    private $sql;
-    protected $rowCount;
+    public $sql;
+
 
     public function __construct()
     {
@@ -36,23 +36,10 @@ class Login extends Connection
         $post = htmlspecialchars($post);
         return $post;
     }
-    public function SQL()
+    public function SQL(): mixed
     {
-        $query = ("SELECT Email, SPassword FROM Sistema_cadastro.Cadastro where Email = '{$this->getEmail()}','{$this->getPassword()}'");
-        $sql = $this->conect->query($query);
-        return $sql;
-    }
-    public function getRowCount()
-    {
-        $this->rowCount = $this->sql->rowCount();
-        return $this->rowCount;
-    }
-    public function verificarUsuario()
-    {
-        if ($this->getRowCount() >= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $query = ("SELECT Email, SPassword FROM Sistema_cadastro.Cadastro where Email = '{$this->getEmail()}' AND SPassword = '{$this->getPassword()}'");
+        $this->sql = $this->conect->query($query);
+        return true && $this->sql;
     }
 }

@@ -12,17 +12,21 @@ if (isset($_POST['submit'])) {
         $user->getEmail();
         $user->getPassword();
         $user->SQL();
-        $user->getRowCount();
-        if ($user->verificarUsuario() == true) {
-            $_SESSION['msgUser'] = 'Bem vindo';
-            header('Location: ../Views/Content.php');
-        } elseif ($user->verificarUsuario() == false) {
-            unset($user);
-            $error = new ErrorMessage();
-            $error->errorUser();
-            $_SESSION['errorUser'];
-            header('Location: ../Views/LoginScreen.php');
-        }
+        echo $row = $user->sql->rowCount();
+
+        /**
+         *  if ($rowCount >= 1) {
+         *    $_SESSION['msgUser'] = 'Bem vindo';
+         *   header('Location: ../Views/Content.php');
+         *} else {
+         *   unset($user);
+         *    $error = new ErrorMessage();
+         *    $error->errorUser();
+         *    $_SESSION['errorUser'];
+         *    header('Location: ../Views/LoginScreen.php');
+         *}
+         *}
+         */
     } else {
         header('Location: ../Views/LoginScreen.php');
     }
