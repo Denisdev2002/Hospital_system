@@ -23,7 +23,7 @@ session_start();
 
             <div class="inputUsers">
                 <label for="textUser">Usuário</label>
-                <input type="email" class="name" name="name" id="name" placeholder="Digite um email...">
+                <input type="email" class="user" name="user" id="user" placeholder="Digite um email...">
             </div>
             <div class="inputPassword">
                 <label for="textPassword">Senha</label>
