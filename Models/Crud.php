@@ -3,7 +3,7 @@
 namespace Cadastro\CRUD;
 
 use Connection as GlobalConnection;
-
+use PDO;
 
 require_once('../Lib/DatabaseConnection.php');
 
@@ -18,6 +18,8 @@ class Form extends GlobalConnection
    private $birth;
    private $password;
    private $confirmPassword;
+   protected $sql;
+   protected $verify;
 
    public function __construct()
    {
@@ -42,13 +44,13 @@ class Form extends GlobalConnection
       $this->limpaPost($this->identity);
       return $this->identity;
    }
-   public function getBirth(): mixed
+   public function getBirth()
    {
       $this->birth = $_POST['birth'];
       $this->limpaPost($this->birth);
       return $this->birth;
    }
-   public function getPassword(): mixed
+   public function getPassword()
    {
       $this->password = $_POST['password'];
       $this->limpaPost($this->password);
@@ -68,11 +70,32 @@ class Form extends GlobalConnection
       $post = htmlspecialchars($post);
       return $post;
    }
-
-   public function Insertion()
+   public function verificarUser()
    {
+      $query = ("SELECT * FROM Sistema_cadastro.Cadastro where Identity = '{$this->getIdentity()}'");
+      $this->verify = $this->conect->prepare($query);
+   }
 
+   public function sql()
+   {
       $query = ("INSERT INTO Sistema_cadastro.Cadastro (Full_name,Email,Identity,Birth,SPassword)VALUES('{$this->getName()}','{$this->getEmail()}','{$this->getIdentity()}','{$this->getBirth()}','{$this->getPassword()}')");
-      $sql = $this->conect->query($query);
+      $this->sql = $this->conect->prepare($query);
+   }
+   public function register()
+   {
+      if ($this->verify->execute()) {
+         $data = $this->verify->fetchAll(PDO::FETCH_ASSOC);
+         var_dump($data);
+         if ($this->getIdentity() != $data['Identity']) {
+            $this->sql->execute();
+            session_start();
+            $_SESSION['msg'] = 'Usuário cadastrado com sucesso';
+            header('Location: ../Views/RegistrationScreen.php');
+         } else {
+            session_start();
+            $_SESSION['msg'] = 'Usuário não cadastrado';
+            header('Location: ../Views/RegistrationScreen.php');
+         }
+      }
    }
 }

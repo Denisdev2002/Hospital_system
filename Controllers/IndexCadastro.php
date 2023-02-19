@@ -6,14 +6,9 @@ require_once('../Models/Error.php');
 
 use Cadastro\CRUD\Form;
 
-class Confirmar extends Form
-{
-}
-
 if (isset($_POST['submit'])) {
    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['identity']) && !empty($_POST['birth']) && !empty($_POST['password']) && !empty($_POST['confirmPassword'])) {
       if ($_POST['password'] === $_POST['confirmPassword']) {
-
          $obj = new Form;
          $obj->getName();
          $obj->getEmail();
@@ -21,14 +16,13 @@ if (isset($_POST['submit'])) {
          $obj->getBirth();
          $obj->getPassword();
          $obj->getConfirmPassword();
-         $obj->Insertion();
-         session_start();
-         $_SESSION['msg'] = 'Usuário cadastrado com sucesso';
-         header('Location: ../Views/RegistrationScreen.php');
+         $obj->sql();
+         $obj->register();
       } else {
          session_start();
          $_SESSION['msg'] = 'Senhas diferentes';
          header('Location: ../Views/RegistrationScreen.php');
+         mysqli_close($this->conect);
       }
    } else {
       $erro = new ErrorMessage();

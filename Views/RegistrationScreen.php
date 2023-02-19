@@ -11,7 +11,7 @@ session_start();
 </head>
 
 <body>
-    <form method="post" action="../Controllers/Index.php">
+    <form method="post" action="../Controllers/IndexCadastro.php">
         <?php if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
             session_unset();

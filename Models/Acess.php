@@ -15,8 +15,6 @@ class Login extends Connection
     protected $query;
     protected $count;
 
-
-
     public function __construct()
     {
         parent::__construct();
@@ -51,7 +49,7 @@ class Login extends Connection
     {
         if ($this->sql->rowCount() > 0) {
             $data = $this->sql->fetch(PDO::FETCH_ASSOC);
-            var_dump($data);
+            //var_dump($data);
             if ($this->getPassword() == $data['SPassword'] && $this->getUser() == $data['Email']) {
                 $_SESSION['msgUser'] = 'Bem vindo';
                 header('Location: ../Views/Content.php');
