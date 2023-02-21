@@ -1,6 +1,6 @@
 <?php
 
-
+require_once("../Models/Crud.php");
 session_start();
 
 if (isset($_SESSION['msgUser'])) {
@@ -18,6 +18,7 @@ if (isset($_SESSION['msgUser'])) {
     <title>Conteúdo</title>
 </head>
 <body>
+    
     
     
 </body>

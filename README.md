@@ -1,5 +1,9 @@
-# Classes no cadastro
+# Sistema de login e cadastrado em php usando pdo,poo e mvcS
+## Esse sistema tem como objetivo cadastrar um usuário, logar , visualizar os usuários cadastrados e deletar
 
-- Form : formulario.php para representar os atributos e funções da entidade formulário;
-- Connection : databaseConnection.php para representar a classe que conecta o php com o banco de dados;
-- Insert : ConfigRegistration.php representa a classe responsável por inserir os dados no banco de dados;
+- Eu procurei usar conceitos modernos para construir esse meu simples sistema, como o padrão MVC que separa o modelo de negócio, a interface e o controlador uma das outras. Através desse conceito é possível ter uma melhor organização e uma maior segurança das partes do código.
+  
+- Além da estrutura que é comumente usada eu também acrescentei mais duas divisões dentro do projeto, para inserir o banco de dados(../Lib/DatabaseConnectio.php) e o seu script(../Lib/Lib.sql), e outra para inserir o arquivo de estilização das páginas(../Public/Style.css).
+
+- Junto com isso é usado mais dois conceitos importantes nos sistemas modernos, que são a orientação a objetos e o PDO que é uma biblioteca totalmente orientada a objetos do PHP que fornece vários recursos importantes para acessar o banco de dados.
+

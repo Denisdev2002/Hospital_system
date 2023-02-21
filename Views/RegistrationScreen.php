@@ -75,7 +75,7 @@ session_start();
             <input type="submit" id="submit" name="submit" value="Cadastrar">
         </div>
     </form>
-    <a href="../Views/LoginScreen.html">Login</a>
+    <a href="../Views/LoginScreen.php">Login</a>
 
 </body>
 

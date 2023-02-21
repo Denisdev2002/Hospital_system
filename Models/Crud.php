@@ -70,32 +70,33 @@ class Form extends GlobalConnection
       $post = htmlspecialchars($post);
       return $post;
    }
-   public function verificarUser()
-   {
-      $query = ("SELECT * FROM Sistema_cadastro.Cadastro where Identity = '{$this->getIdentity()}'");
-      $this->verify = $this->conect->prepare($query);
-   }
 
    public function sql()
    {
-      $query = ("INSERT INTO Sistema_cadastro.Cadastro (Full_name,Email,Identity,Birth,SPassword)VALUES('{$this->getName()}','{$this->getEmail()}','{$this->getIdentity()}','{$this->getBirth()}','{$this->getPassword()}')");
-      $this->sql = $this->conect->prepare($query);
+      $query = ("SELECT * FROM Sistema_cadastro.Cadastro where Identity = '{$this->getIdentity()}'");
+      $this->verify = $this->conect->prepare($query);
+      $data = $this->verify->fetch(PDO::FETCH_ASSOC);
+      var_dump($data);
+      if ($this->verify->execute() && $this->getIdentity() === $data['Identity']) {
+         mysqli_close($this->conect);
+         $_SESSION['msg'] = 'CPF já cadastrado';
+         header('Location: ../Views/RegistrationScreen.php');
+      } else {
+         $query = ("INSERT INTO Sistema_cadastro.Cadastro (Full_name,Email,Identity,Birth,SPassword)VALUES('{$this->getName()}','{$this->getEmail()}','{$this->getIdentity()}','{$this->getBirth()}','{$this->getPassword()}')");
+         $this->sql = $this->conect->prepare($query);
+         $this->sql->execute();
+      }
    }
    public function register()
    {
-      if ($this->verify->execute()) {
-         $data = $this->verify->fetchAll(PDO::FETCH_ASSOC);
-         var_dump($data);
-         if ($this->getIdentity() != $data['Identity']) {
-            $this->sql->execute();
-            session_start();
-            $_SESSION['msg'] = 'Usuário cadastrado com sucesso';
-            header('Location: ../Views/RegistrationScreen.php');
-         } else {
-            session_start();
-            $_SESSION['msg'] = 'Usuário não cadastrado';
-            header('Location: ../Views/RegistrationScreen.php');
-         }
+      if ($this->sql->execute()) {
+         session_start();
+         $_SESSION['msg'] = 'Usuário cadastrado com sucesso';
+         header('Location: ../Views/RegistrationScreen.php');
+      } else {
+         session_start();
+         $_SESSION['msg'] = 'Usuário não cadastrado';
+         header('Location: ../Views/RegistrationScreen.php');
       }
    }
 }
