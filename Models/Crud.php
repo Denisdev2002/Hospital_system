@@ -20,6 +20,8 @@ class Form extends GlobalConnection
    private $confirmPassword;
    protected $sql;
    protected $verify;
+   protected $data;
+   protected $result;
 
    public function __construct()
    {
@@ -32,7 +34,7 @@ class Form extends GlobalConnection
       $this->limpaPost($this->name);
       return $this->name;
    }
-   public function getEmail(): string
+   public function getEmail()
    {
       $this->email = $_POST['email'];
       $this->limpaPost($this->email);
@@ -75,9 +77,9 @@ class Form extends GlobalConnection
    {
       $query = ("SELECT * FROM Sistema_cadastro.Cadastro where Identity = '{$this->getIdentity()}'");
       $this->verify = $this->conect->prepare($query);
-      $data = $this->verify->fetch(PDO::FETCH_ASSOC);
-      var_dump($data);
-      if ($this->verify->execute() && $this->getIdentity() === $data['Identity']) {
+      $this->data = $this->verify->fetch(PDO::FETCH_ASSOC);
+      var_dump($this->data);
+      if ($this->verify->execute() && $this->getIdentity() === $this->data['Identity']) {
          mysqli_close($this->conect);
          $_SESSION['msg'] = 'CPF já cadastrado';
          header('Location: ../Views/RegistrationScreen.php');
@@ -98,5 +100,19 @@ class Form extends GlobalConnection
          $_SESSION['msg'] = 'Usuário não cadastrado';
          header('Location: ../Views/RegistrationScreen.php');
       }
+   }
+   public function showUsers()
+   {
+      $sql = $this->conect->prepare("SELECT * FROM  Sistema_cadastro.Cadastro WHERE IdUser");
+      $sql->execute();
+      $this->result = $sql->fetchAll(PDO::FETCH_ASSOC);
+   }
+   public function getResult()
+   {
+      return $this->result;
+   }
+   public function deleteUser(){
+      $sql = $this->conect->prepare("DELETE * FROM Sistema_cadastro.Cadastro Where idUser = '{$this->result['idUser']}'");
+      $sql->execute();
    }
 }
