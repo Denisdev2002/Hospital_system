@@ -37,7 +37,7 @@ if (isset($_SESSION['msgUser'])) {
             <td><?php echo "EMAIL :" . "{$key['Email']}" . "</br>" ?></td>
             <td><?php echo "CPF :" . "{$key['Identity']}" . "</br>" ?></td>
             <td><?php echo "NASCIMENTO :" . "{$key['Birth']}" . "</br>" ?></td>
-            <input type="submit" name="excluir" id="excluir" value="Excluir"><br>
+            <input type="submit" name="submit" id="submit" value="Excluir"><br>
             <?php if (isset($_POST['excluir'])) {
                 $user = new Form();
                 $user->deleteUser();
