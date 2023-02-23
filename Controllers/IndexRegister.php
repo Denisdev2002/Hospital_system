@@ -21,12 +21,12 @@ if (isset($_POST['submit'])) {
       } else {
          session_start();
          $_SESSION['msg'] = 'Senhas diferentes';
-         header('Location: ../Views/RegistrationScreen.php');
+         header('Location: ../Views/RegisterScreen.php');
          mysqli_close($this->conect);
       }
    } else {
       $erro = new ErrorMessage();
-      header('Location: ../Views/RegistrationScreen.php ');
+      header('Location: ../Views/RegisterScreen.php ');
       if (empty($_POST['name'])) {
          $erro->errorName();
       }

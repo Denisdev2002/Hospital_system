@@ -21,7 +21,8 @@ class Form extends GlobalConnection
    protected $sql;
    protected $verify;
    protected $data;
-   protected $result;
+   private $result;
+   private $resultado;
 
    public function __construct()
    {
@@ -111,8 +112,18 @@ class Form extends GlobalConnection
    {
       return $this->result;
    }
-   public function deleteUser(){
-      $sql = $this->conect->prepare("DELETE * FROM Sistema_cadastro.Cadastro Where idUser = '{$this->result['idUser']}'");
+   public function deleteUser($id)
+   {
+      $sql = $this->conect->prepare("DELETE FROM Sistema_cadastro.Cadastro Where idUser = $id");
       $sql->execute();
+   }
+   public function ViewUser(int $id)
+   {
+      $sql = $this->conect->prepare("SELECT * FROM  Sistema_cadastro.Cadastro WHERE idUser = '{$id}'");
+      $sql->execute();
+      $this->resultado = $sql->fetch(PDO::FETCH_ASSOC);
+   }
+   public function getResultado(){
+      return $this->resultado;
    }
 }
