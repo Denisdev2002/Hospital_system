@@ -4,6 +4,7 @@ namespace Models\Acess\Login;
 
 require_once('../Lib/DatabaseConnection.php');
 
+use Cadastro\CRUD\Form;
 use Connection;
 use PDO;
 
@@ -49,10 +50,10 @@ class Login extends Connection
     {
         if ($this->sql->rowCount() > 0) {
             $data = $this->sql->fetch(PDO::FETCH_ASSOC);
-            //var_dump($data);
+            $_GET['id'] = $data['idUser'];
             if ($this->getPassword() == $data['SPassword'] && $this->getUser() == $data['Email']) {
-                $_SESSION['msgUser'] = 'Bem vindo';
-                header('Location: ../Views/Content.php');
+                $_SESSION['msgUser'] = 'Bem vindo' . $data['Full_name'];
+                header('Location: ../Views/Content.php?id=');
             } else {
                 header('Location: ../Views/LoginScreen.php');
             }

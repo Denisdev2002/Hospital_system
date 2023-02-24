@@ -78,12 +78,12 @@ class Form extends GlobalConnection
    {
       $query = ("SELECT * FROM Sistema_cadastro.Cadastro where Identity = '{$this->getIdentity()}'");
       $this->verify = $this->conect->prepare($query);
+      $this->verify->execute();
       $this->data = $this->verify->fetch(PDO::FETCH_ASSOC);
-      var_dump($this->data);
-      if ($this->verify->execute() && $this->getIdentity() === $this->data['Identity']) {
-         mysqli_close($this->conect);
+
+      if ($this->verify->rowCount() > 0) {
          $_SESSION['msg'] = 'CPF já cadastrado';
-         header('Location: ../Views/RegistrationScreen.php');
+         header('Location: ../Views/RegisterScreen.php');
       } else {
          $query = ("INSERT INTO Sistema_cadastro.Cadastro (Full_name,Email,Identity,Birth,SPassword)VALUES('{$this->getName()}','{$this->getEmail()}','{$this->getIdentity()}','{$this->getBirth()}','{$this->getPassword()}')");
          $this->sql = $this->conect->prepare($query);
@@ -122,6 +122,7 @@ class Form extends GlobalConnection
       $sql = $this->conect->prepare("SELECT * FROM  Sistema_cadastro.Cadastro WHERE idUser = '{$id}'");
       $sql->execute();
       $this->resultado = $sql->fetch(PDO::FETCH_ASSOC);
+      
    }
    public function getResultado()
    {

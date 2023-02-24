@@ -20,6 +20,7 @@ session_start();
         } ?>
         <fieldset>
             <legend>Cadastro</legend>
+
             <div class="inputName">
                 <label for="textName">Nome</label>
                 <?php if (isset($_SESSION['errorName'])) {
@@ -78,22 +79,7 @@ session_start();
         </div>
     </form>
     <a href="../Views/LoginScreen.php">Login</a>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#submit').click(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "Controllers/IndexRegister.php",
-                    method: "post",
-                    data: $('form').serialize(),
-                    dataType: "text",
-                    success: function(msg) {
-                        $($_SESSION['msg'].text(msg))
-                    }
-                })
-            })
-        })
-    </script>
+
 </body>
 
 </html>
