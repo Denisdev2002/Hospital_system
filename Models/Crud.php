@@ -123,7 +123,8 @@ class Form extends GlobalConnection
       $sql->execute();
       $this->resultado = $sql->fetch(PDO::FETCH_ASSOC);
    }
-   public function getResultado(){
+   public function getResultado()
+   {
       return $this->resultado;
    }
 }

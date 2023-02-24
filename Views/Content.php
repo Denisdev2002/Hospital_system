@@ -10,10 +10,6 @@ if (isset($_SESSION['msgUser'])) {
     echo $_SESSION['msgUser'];
     unset($_SESSION['msgUser']);
 }
-/**else {
-    header('Location: ../Views/LoginScreen.php');
-} 
- */
 
 ?>
 <html lang="pt-br">
@@ -22,10 +18,13 @@ if (isset($_SESSION['msgUser'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <title>Conteúdo</title>
 </head>
 
 <body>
+    
     <?php
     $users = new Form;
     $users->showUsers();

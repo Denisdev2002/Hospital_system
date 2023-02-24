@@ -7,6 +7,8 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <title>Cadastro</title>
 </head>
 
@@ -62,7 +64,7 @@ session_start();
                 <input type="password" id="password" name="password" placeholder="Digite uma senha" minlength="6" maxlength="10">
             </div>
             <div class="inputConfirmPassword">
-        
+
                 <label for="textConfirmPassowrd">Confirmação da senha</label>
                 <?php if (isset($_SESSION['errorConfirmPassword'])) {
                     echo $_SESSION['errorConfirmPassword'];
@@ -76,7 +78,22 @@ session_start();
         </div>
     </form>
     <a href="../Views/LoginScreen.php">Login</a>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#submit').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "Controllers/IndexRegister.php",
+                    method: "post",
+                    data: $('form').serialize(),
+                    dataType: "text",
+                    success: function(msg) {
+                        $($_SESSION['msg'].text(msg))
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>
