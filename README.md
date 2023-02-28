@@ -1,7 +1,7 @@
 # Sistema de login e cadastrado em php usando pdo,poo e mvc
-## Esse sistema tem como objetivo cadastrar um usuário, logar , visualizar os usuários cadastrados e deletar
+## Esse sistema tem como objetivo cadastrar um usuário, logar , visualiza-los, editar os dados e deletar
 
-- Eu procurei usar conceitos modernos para construir esse meu simples sistema, como o padrão MVC que separa o modelo de negócio, a interface e o controlador uma das outras. Através desse conceito é possível ter uma melhor organização e uma maior segurança das partes do código.
+- Eu procurei usar conceitos modernos para construir esse meu simples sistema, como o padrão MVC que separa o modelo, a interface e o controlador (que é a regra do negócio) uma das outras. Através desse conceito é possível ter uma melhor organização e uma maior segurança das partes do código.
   
 - Além da estrutura que é comumente usada eu também acrescentei mais duas divisões dentro do projeto, para inserir o banco de dados(../Lib/DatabaseConnectio.php) e o seu script(../Lib/Lib.sql), e outra para inserir o arquivo de estilização das páginas(../Public/Style.css).
 
